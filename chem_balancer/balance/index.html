@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chemical Equation Balancer</title>
+  </head>
+  <body>
+    <h1>Chemical Equation Balancer</h1>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="file" name="image" required>
+      <button type="subtmit">Balance!</button>
+    </form>
+    {% if balanced_equation%}
+      <h2>Balanced Equation:</h2>
+      <p>
+        {% for element, coefficient in balanced_equation.items %}
+        {{ element }}<sub>{{ coefficient }}</sub> +
+        {% endfor %}
+      </p>
+    {% endif %}
+  </body>
+</html>
